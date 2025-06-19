@@ -1,4 +1,4 @@
-import { Box, Grid, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Grid, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { getFakeDataService } from "../../services/animalServices";
@@ -35,7 +35,7 @@ const SearchResult = () => {
 		};
 
 		getFakeData();
-	}, [searchParam]);
+	}, [animals, searchParam, types]);
 
 	const handleSelectItem = (item) => {
 		setSelectedItem(item);

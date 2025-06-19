@@ -24,7 +24,7 @@ function App() {
 			};
 			initAnimals();
 		}
-	}, [animalData]);
+	}, [animalData, animalTypes, dispatch]);
 
 	return (
 		<Routes>
