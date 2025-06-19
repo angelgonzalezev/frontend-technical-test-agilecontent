@@ -1,4 +1,3 @@
-import { Center, Image, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 
 const ItemDetailsDialogComponent = ({ selectedItem, setOpenDetailsDialog }) => {
@@ -16,16 +15,53 @@ const ItemDetailsDialogComponent = ({ selectedItem, setOpenDetailsDialog }) => {
 	}, []);
 
 	return (
-		<Center w="100vw" h="100vh" bgColor="rgba(0, 0, 0, 0.5)" position="absolute" top={0} left={0} px={10}>
-			<Stack ref={dialogRef} borderWidth="1px" bgColor="white" borderRadius="sm" key={selectedItem.id} p={3}>
-				<Image src={selectedItem.image} w="100%" />
-				<Text fontSize="xs">{selectedItem.url}</Text>
-				<Text fontSize="lg" fontWeight="semibold">
-					{selectedItem.title}
-				</Text>
-				<Text fontSize="xs">{selectedItem.description}</Text>
-			</Stack>
-		</Center>
+		<div
+			style={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				width: "100vw",
+				height: "100vh",
+				position: "fixed",
+				top: 0,
+				left: 0,
+				backgroundColor: "rgba(0, 0, 0, 0.5)",
+			}}
+		>
+			<div
+				ref={dialogRef}
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "10px",
+					backgroundColor: "#fff",
+					padding: "20px",
+					borderRadius: "8px",
+					width: "90%",
+					position: "relative",
+				}}
+			>
+				<img src={selectedItem.image} alt={selectedItem.title} style={{ width: "100%", borderRadius: "4px" }} />
+				<p style={{ fontSize: "14px", color: "#666" }}>{selectedItem.url}</p>
+				<p style={{ fontSize: "16px", fontWeight: "bold" }}>{selectedItem.title}</p>
+				<p style={{ fontSize: "14px" }}>{selectedItem.description}</p>
+
+				<button
+					onClick={() => setOpenDetailsDialog(false)}
+					style={{
+						position: "absolute",
+						top: "10px",
+						right: "10px",
+						background: "none",
+						border: "none",
+						fontSize: "18px",
+						cursor: "pointer",
+					}}
+				>
+					×
+				</button>
+			</div>
+		</div>
 	);
 };
 

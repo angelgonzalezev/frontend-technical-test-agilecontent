@@ -1,18 +1,21 @@
-import { Input } from "@chakra-ui/react";
 import { colors } from "../constants/colors";
 
 const InputComponent = ({ onChange, name, value, w = "100%", handleSearch }) => {
 	return (
-		<Input
-			color={colors.GREYDARK}
+		<input
+			style={{
+				width: w,
+				margin: 0,
+				marginLeft: "8px",
+				padding: 0,
+				color: colors.GREYDARK,
+				border: "none",
+
+				_focus: { border: "none", boxShadow: "none", outline: "none" },
+			}}
 			name={name}
 			onChange={onChange}
 			value={value}
-			w={w}
-			m={0}
-			p={0}
-			border="none"
-			_focusVisible={{ border: "none", boxShadow: "none", outline: "none" }}
 			onKeyDown={handleSearch}
 		/>
 	);

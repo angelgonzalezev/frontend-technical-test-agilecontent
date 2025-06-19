@@ -1,14 +1,36 @@
-import { SkeletonText, Stack, VStack } from "@chakra-ui/react";
+import { colors } from "../../../constants/colors";
 
-const SkeletonComponent = () => {
+const SkeletonComponent = ({ borderRadius = "4px" }) => {
 	return (
-		<Stack gap="6" maxW="xl">
-			<VStack width="full" gap={3}>
-				<SkeletonText noOfLines={1} w={"sm"} />
-				<SkeletonText noOfLines={1} w={"lg"} />
-				<SkeletonText noOfLines={1} w={"2xl"} />
-			</VStack>
-		</Stack>
+		<div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "24px" }}>
+			<div
+				className="skeleton"
+				style={{
+					width: "30%",
+					height: "24px",
+					borderRadius,
+					backgroundColor: colors.GREYLIGHT,
+				}}
+			/>
+			<div
+				className="skeleton"
+				style={{
+					width: "50%",
+					height: "24px",
+					borderRadius,
+					backgroundColor: colors.GREYLIGHT,
+				}}
+			/>
+			<div
+				className="skeleton"
+				style={{
+					width: "70%",
+					height: "24px",
+					borderRadius,
+					backgroundColor: colors.GREYLIGHT,
+				}}
+			/>
+		</div>
 	);
 };
 export default SkeletonComponent;

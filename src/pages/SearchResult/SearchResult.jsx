@@ -1,4 +1,3 @@
-import { Box, Grid, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { getFakeDataService } from "../../services/animalServices";
@@ -52,53 +51,62 @@ const SearchResult = () => {
 
 		if (!searchSuccess) {
 			return (
-				<Stack>
+				<div style={{ display: "flex", flexDirection: "column" }}>
 					{searchParam.trim() !== "" && (
-						<Text>
+						<p>
 							No results for
-							<Text as="span" fontWeight="bold">
-								{" "}
-								'{searchParam}'.
-							</Text>
-						</Text>
+							<span style={{ fontWeight: "bold" }}> '{searchParam}'.</span>
+						</p>
 					)}
-					<Text>
+					<p>
 						Try looking for:
 						{types.map((item, index) => (
-							<Text key={index} as="span" fontWeight="bold">
+							<span key={index} style={{ fontWeight: "bold" }}>
 								{" "}
 								{item}
-							</Text>
+							</span>
 						))}
 						.
-					</Text>
-				</Stack>
+					</p>
+				</div>
 			);
 		}
 
 		return (
 			<>
-				<Grid templateColumns={"0.7fr 0.3fr"} gap={3} w="100%">
-					<Stack gap={6}>
+				<div style={{ display: "grid", gridTemplateColumns: "0.7fr 0.3fr", gap: "1rem", width: "90%" }}>
+					<div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
 						{searchList.map((item, index) => (
 							<SearchItemComponent key={index} item={item} handleSelectItem={(item) => handleSelectItem(item)} />
 						))}
-					</Stack>
-					<Box display={{ base: "none", md: "block" }}>
+					</div>
+					<div style={{ display: window.innerWidth < 768 ? "none" : "block" }}>
 						{selectedItem ? <ItemDetailsComponent item={selectedItem} /> : null}
-					</Box>
-				</Grid>
+					</div>
+				</div>
 			</>
 		);
 	};
 
 	return (
-		<Stack flexDirection="column" w="100%" h="100%" px={10} gap={8} mt={4}>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				width: "100%",
+				height: "100%",
+				px: "12px",
+				marginTop: "8px",
+				gap: "12px",
+				paddingTop: "10px",
+			}}
+		>
 			{renderSearch()}
 			{openDetailsDialog && (
 				<ItemDetailsDialogComponent selectedItem={selectedItem} setOpenDetailsDialog={setOpenDetailsDialog} />
 			)}
-		</Stack>
+		</div>
 	);
 };
 export default SearchResult;

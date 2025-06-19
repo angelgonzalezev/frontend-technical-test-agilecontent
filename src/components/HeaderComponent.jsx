@@ -1,12 +1,11 @@
-import { Center, HStack, Image, Stack, Text } from "@chakra-ui/react";
-import { colors } from "../constants/colors";
 import { useNavigate, useSearchParams } from "react-router";
-import settingsIcon from "../assets/settings-icon.svg";
-import userProfileImage from "../assets/user-profile.jpeg";
-import GoogleIcon from "../assets/google_logo.png";
-import SearchBarComponent from "./SearchBarComponent";
+import { SettingIcon } from "../assets/icons";
+import UserProfileImage from "../assets/images/user-profile.jpeg";
+import GoogleIcon from "../assets/images/google_logo.png";
 import { useEffect, useState } from "react";
 import { PublicRoutes } from "../routes/routes";
+import SearchBarComponent from "./SearchBarComponent";
+import { colors } from "../constants/colors";
 
 const HeaderComponent = () => {
 	// Get existing search param
@@ -43,43 +42,54 @@ const HeaderComponent = () => {
 	};
 
 	return (
-		<Stack
-			flexDir="row"
-			alignItems="center"
-			justifyContent="space-between"
-			p={4}
-			color={colors.GREYDARK}
-			borderBottomWidth="1px"
-			borderColor={colors.GREYLIGHT}
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "row",
+				alignItems: "center",
+				justifyContent: "space-between",
+				padding: "12px",
+				color: colors.GREYDARK,
+				borderBottom: `1px solid ${colors.GREYLIGHT} `,
+			}}
 		>
 			{typeof searchValue === "string" ? (
-				<Stack flexDir="row" alignItems="center" w="100%">
-					<Image src={GoogleIcon} maxW="92px" onClick={handleHomeRedirection} cursor="pointer" />
+				<div style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%", gap: "24px" }}>
+					<img src={GoogleIcon} onClick={handleHomeRedirection} style={{ maxWidth: "92px", cursor: "pointer" }} />
 					<SearchBarComponent
 						searchValue={searchValue}
-						px={2}
-						py={0}
+						px="8px"
+						py="4px"
 						maxW="300px"
 						handleOnChange={handleOnChangeInput}
 						handleSearch={handleOnSearch}
 						cleanSearchValue={handleCleanSearchValue}
 					/>
-				</Stack>
+				</div>
 			) : (
-				<Text fontSize="lg">
-					<Text as="span" fontWeight="bold">
+				<p style={{ fontSize: "20px" }}>
+					<span as="span" style={{ fontWeight: "bold" }}>
 						Agile Content
-					</Text>{" "}
+					</span>{" "}
 					Frontend test
-				</Text>
+				</p>
 			)}
-			<HStack>
-				<Image src={settingsIcon} alt="Settings" />
-				<Center h="40px" w="40px">
-					<Image src={userProfileImage} rounded="full" />
-				</Center>
-			</HStack>
-		</Stack>
+			<div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "8px" }}>
+				<img src={SettingIcon} alt="Settings" />
+
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						height: "40px",
+						width: "40px",
+					}}
+				>
+					<img src={UserProfileImage} style={{ borderRadius: "100%" }} />
+				</div>
+			</div>
+		</div>
 	);
 };
 export default HeaderComponent;

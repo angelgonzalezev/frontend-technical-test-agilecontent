@@ -1,21 +1,18 @@
-import { Stack, Text } from "@chakra-ui/react";
+import { colors } from "../../../constants/colors";
 
 const SearchItemComponent = ({ item, handleSelectItem }) => {
 	const { url, title, description, id } = item;
 	return (
-		<Stack key={id} gap={0}>
-			<Text fontSize="xs">{url}</Text>
-			<Text
-				fontSize="lg"
-				fontWeight="semibold"
-				color="blue.600"
-				cursor="pointer"
+		<div style={{ display: "flex", flexDirection: "column", gap: "0" }} key={id}>
+			<p style={{ fontSize: "12px" }}>{url}</p>
+			<p
+				style={{ fontSize: "20px", fontWeight: "bold", color: colors.BLUE, cursor: "pointer" }}
 				onClick={() => handleSelectItem(item)}
 			>
 				{title}
-			</Text>
-			<Text fontSize="xs">{description}</Text>
-		</Stack>
+			</p>
+			<p style={{ fontSize: "14px" }}>{description}</p>
+		</div>
 	);
 };
 export default SearchItemComponent;

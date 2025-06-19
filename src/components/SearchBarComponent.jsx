@@ -1,21 +1,31 @@
-import { Button, HStack, Icon } from "@chakra-ui/react";
-import { Search, X } from "lucide-react";
-import { colors } from "../constants/colors";
 import InputComponent from "./InputComponent";
+import { CloseIcon, SearchIcon } from "../assets/icons";
 
 const SearchBarComponent = ({
 	searchValue,
 	maxW,
 	handleOnChange,
 	w = "100%",
-	px = 4,
-	py = 2,
+	px = "16px",
+	py = "8px",
 	handleSearch,
 	cleanSearchValue,
 }) => {
 	return (
-		<HStack px={px} py={py} borderWidth="1px" borderRadius="4xl" borderColor={colors.GREYLIGHT} w={w} maxW={maxW}>
-			<Search color={colors.GREYDARK} size={16} />
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "row",
+				alignItems: "center",
+				paddingInline: px,
+				paddingBlock: py,
+				width: w,
+				maxWidth: maxW,
+				borderWidth: "1px",
+				borderRadius: "24px",
+			}}
+		>
+			<img src={SearchIcon} style={{ height: "16px" }} />
 			<InputComponent
 				onChange={handleOnChange}
 				name="search"
@@ -23,12 +33,8 @@ const SearchBarComponent = ({
 				w="100%"
 				handleSearch={handleSearch}
 			/>
-			{searchValue && (
-				<Icon color={colors.GREYDARK} size={22} cursor="pointer" onClick={cleanSearchValue}>
-					<X />
-				</Icon>
-			)}
-		</HStack>
+			{searchValue && <img src={CloseIcon} style={{ height: "16px", cursor: "pointer" }} onClick={cleanSearchValue} />}
+		</div>
 	);
 };
 export default SearchBarComponent;

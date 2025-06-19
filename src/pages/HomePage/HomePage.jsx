@@ -1,10 +1,9 @@
-import { Button, Center, Image } from "@chakra-ui/react";
-import GoogleIcon from "../../assets/google_logo.png";
-import SearchBarComponent from "../../components/SearchBarComponent";
 import { useState } from "react";
+import GoogleIcon from "../../assets/images/google_logo.png";
 import { colors } from "../../constants/colors";
 import { useNavigate } from "react-router";
 import { PublicRoutes } from "../../routes/routes";
+import SearchBarComponent from "../../components/SearchBarComponent";
 
 const HomePage = () => {
 	const navigate = useNavigate();
@@ -23,7 +22,7 @@ const HomePage = () => {
 	};
 
 	const handleClick = (e) => {
-		if (e.target.name === "search") {
+		if (e.target.name === "search" && searchValue.trim() !== "") {
 			handleSearch();
 		}
 	};
@@ -37,8 +36,18 @@ const HomePage = () => {
 	};
 
 	return (
-		<Center flexDirection="column" w="100" h="100%" px={20} gap={8}>
-			<Image src={GoogleIcon} maxW="272px" />
+		<div
+			style={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				flexDirection: "column",
+				flex: 1,
+				paddingInline: "20px",
+				gap: "18px",
+			}}
+		>
+			<img src={GoogleIcon} style={{ maxWidth: "272px" }} />
 			<SearchBarComponent
 				maxW="720px"
 				handleOnChange={handleOnChangeInput}
@@ -47,18 +56,14 @@ const HomePage = () => {
 				cleanSearchValue={handleCleanSearchValue}
 			/>
 
-			<Button
+			<button
+				style={{ backgroundColor: colors.GREYLIGHT, color: colors.GREYDARK, disabled: !searchValue }}
 				onClick={handleClick}
-				disabled={!searchValue}
-				bgColor={colors.GREYLIGHT}
-				color={colors.GREYDARK}
-				_focusVisible={{ border: "none", boxShadow: "none", outline: "none" }}
-				_hover={{ border: "none" }}
 				name="search"
 			>
-				Buscar
-			</Button>
-		</Center>
+				Search
+			</button>
+		</div>
 	);
 };
 export default HomePage;

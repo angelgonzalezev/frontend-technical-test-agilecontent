@@ -1,18 +1,25 @@
-import { Image, Stack, Text } from "@chakra-ui/react";
 import { colors } from "../../../constants/colors";
 
 const ItemDetailsComponent = ({ item }) => {
 	const { url, title, description, id } = item;
 
 	return (
-		<Stack borderWidth="1px" borderColor={colors.GREYLIGHT} borderRadius="sm" key={id} p={3}>
-			<Image src={item.image} h="100%" />
-			<Text fontSize="xs">{url}</Text>
-			<Text fontSize="lg" fontWeight="semibold">
-				{title}
-			</Text>
-			<Text fontSize="xs">{description}</Text>
-		</Stack>
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				border: `1px solid ${colors.GREYLIGHT}`,
+				borderRadius: "4px",
+				padding: "0.5rem",
+				gap: "8px",
+			}}
+			key={id}
+		>
+			<img src={item.image} />
+			<p style={{ fontSize: "10px" }}>{url}</p>
+			<p style={{ fontSize: "18px", fontWeight: "bold" }}>{title}</p>
+			<p style={{ fontSize: "12px" }}>{description}</p>
+		</div>
 	);
 };
 export default ItemDetailsComponent;

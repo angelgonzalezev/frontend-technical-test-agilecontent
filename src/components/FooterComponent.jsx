@@ -1,19 +1,22 @@
-import { Stack, Text } from "@chakra-ui/react";
 import { colors } from "../constants/colors";
 
 const FooterComponent = () => {
 	return (
-		<Stack
-			p={4}
-			bgColor={colors.GREYLIGHT}
-			color={colors.GREYDARK}
-			flexDir="row"
-			alignItems="center"
-			justifyContent="space-between"
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "row",
+				alignItems: "center",
+				justifyContent: "space-between",
+				padding: "18px",
+				backgroundColor: colors.GREYLIGHT,
+				color: colors.GREYDARK,
+				marginTop: "20px",
+			}}
 		>
-			<Text>@ Google 2021</Text>
-			<Text>version: 0.1.0</Text>
-		</Stack>
+			<p>@ Google 2021</p>
+			<p>version: 0.1.0</p>
+		</div>
 	);
 };
 export default FooterComponent;
