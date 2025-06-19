@@ -29,6 +29,7 @@ export const getFakeDataService = async ({ search, animals, types }) => {
 		return { success: true, data };
 	}
 	const filteredAnimal = animals.filter((animal) => animal.title.toLowerCase().includes(search.toLowerCase()));
+	await delay();
 
 	if (filteredAnimal.length > 0) {
 		return { success: true, data: filteredAnimal };
