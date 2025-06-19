@@ -3,12 +3,17 @@ import GoogleIcon from "../../assets/google_logo.png";
 import SearchBarComponent from "../../components/SearchBarComponent";
 import { useState } from "react";
 import { colors } from "../../constants/colors";
+import { useNavigate } from "react-router";
+import { PublicRoutes } from "../../routes/routes";
 
 const HomePage = () => {
-	const [searchValue, setSearchValue] = useState();
-	console.log("🚀 ~ HomePage ~ searchValue:", searchValue);
+	const navigate = useNavigate();
 
-	const handleOnSearch = () => {};
+	const [searchValue, setSearchValue] = useState();
+
+	const handleOnSearch = () => {
+		navigate(`${PublicRoutes.Search}?value=${searchValue}`);
+	};
 
 	const handleOnChangeInput = (e) => {
 		setSearchValue(e.target.value);
@@ -21,7 +26,7 @@ const HomePage = () => {
 
 			<Button
 				onClick={handleOnSearch}
-				_disabled={searchValue}
+				disabled={!searchValue}
 				bgColor={colors.GREYLIGHT}
 				color={colors.GREYDARK}
 				_focusVisible={{ border: "none", boxShadow: "none", outline: "none" }}
