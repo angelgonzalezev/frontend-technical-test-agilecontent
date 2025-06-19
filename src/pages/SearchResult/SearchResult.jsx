@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { getFakeDataService } from "../../services/animalServices";
 import SkeletonComponent from "./components/SkeletonComponent";
-import SearchItemComponent from "./components/SearchItemComponent";
-import ItemDetailsComponent from "./components/ItemDetailsComponent";
 import ItemDetailsDialogComponent from "./components/ItemDetailsDialogComponent";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useSelector } from "react-redux";
