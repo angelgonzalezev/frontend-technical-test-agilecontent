@@ -32,10 +32,20 @@ const HomePage = () => {
 		setSearchValue(e.target.value);
 	};
 
+	const handleCleanSearchValue = () => {
+		setSearchValue("");
+	};
+
 	return (
 		<Center flexDirection="column" w="100" h="100%" px={20} gap={8}>
 			<Image src={GoogleIcon} maxW="272px" />
-			<SearchBarComponent maxW="720px" handleOnChange={handleOnChangeInput} handleSearch={handleKeyDown} />
+			<SearchBarComponent
+				maxW="720px"
+				handleOnChange={handleOnChangeInput}
+				handleSearch={handleKeyDown}
+				searchValue={searchValue}
+				cleanSearchValue={handleCleanSearchValue}
+			/>
 
 			<Button
 				onClick={handleClick}

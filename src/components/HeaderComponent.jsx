@@ -38,6 +38,10 @@ const HeaderComponent = () => {
 		navigate(PublicRoutes.Home);
 	};
 
+	const handleCleanSearchValue = () => {
+		setSearchValue("");
+	};
+
 	return (
 		<Stack
 			flexDir="row"
@@ -58,6 +62,7 @@ const HeaderComponent = () => {
 						maxW="300px"
 						handleOnChange={handleOnChangeInput}
 						handleSearch={handleOnSearch}
+						cleanSearchValue={handleCleanSearchValue}
 					/>
 				</Stack>
 			) : (
