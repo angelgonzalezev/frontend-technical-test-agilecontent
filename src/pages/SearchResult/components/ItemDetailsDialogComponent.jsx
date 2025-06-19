@@ -36,30 +36,15 @@ const ItemDetailsDialogComponent = ({ selectedItem, setOpenDetailsDialog }) => {
 					gap: "10px",
 					backgroundColor: "#fff",
 					padding: "20px",
-					borderRadius: "8px",
-					width: "90%",
+					width: "100%",
 					position: "relative",
+					marginInline: "20px",
 				}}
 			>
-				<img src={selectedItem.image} alt={selectedItem.title} style={{ width: "100%", borderRadius: "4px" }} />
+				<img src={selectedItem.image} alt={selectedItem.title} style={{ width: "100%" }} />
 				<p style={{ fontSize: "14px", color: "#666" }}>{selectedItem.url}</p>
 				<p style={{ fontSize: "16px", fontWeight: "bold" }}>{selectedItem.title}</p>
 				<p style={{ fontSize: "14px" }}>{selectedItem.description}</p>
-
-				<button
-					onClick={() => setOpenDetailsDialog(false)}
-					style={{
-						position: "absolute",
-						top: "10px",
-						right: "10px",
-						background: "none",
-						border: "none",
-						fontSize: "18px",
-						cursor: "pointer",
-					}}
-				>
-					×
-				</button>
 			</div>
 		</div>
 	);

@@ -1,6 +1,5 @@
 import HeaderComponent from "../components/HeaderComponent";
 import FooterComponent from "../components/FooterComponent";
-import { Fragment } from "react";
 
 const MainLayout = ({ children }) => {
 	return (
