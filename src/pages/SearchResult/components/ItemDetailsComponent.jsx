@@ -15,7 +15,7 @@ const ItemDetailsComponent = ({ item }) => {
 			}}
 			key={id}
 		>
-			<img src={item.image} />
+			<img src={item.image} width="100%" />
 			<p style={{ fontSize: "10px" }}>{url}</p>
 			<p style={{ fontSize: "18px", fontWeight: "bold" }}>{title}</p>
 			<p style={{ fontSize: "12px" }}>{description}</p>

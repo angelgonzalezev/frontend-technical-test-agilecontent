@@ -1,5 +1,6 @@
 import InputComponent from "./InputComponent";
 import { CloseIcon, SearchIcon } from "../assets/icons";
+import { colors } from "../constants/colors";
 
 const SearchBarComponent = ({
 	searchValue,
@@ -7,7 +8,7 @@ const SearchBarComponent = ({
 	handleOnChange,
 	w = "100%",
 	px = "16px",
-	py = "8px",
+	py = "12px",
 	handleSearch,
 	cleanSearchValue,
 }) => {
@@ -21,7 +22,7 @@ const SearchBarComponent = ({
 				paddingBlock: py,
 				width: w,
 				maxWidth: maxW,
-				borderWidth: "1px",
+				border: `1px solid ${colors.GREYLIGHT}`,
 				borderRadius: "24px",
 			}}
 		>

@@ -2,7 +2,7 @@ import { colors } from "../../../constants/colors";
 
 const SkeletonComponent = ({ borderRadius = "4px" }) => {
 	return (
-		<div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "24px" }}>
+		<div style={{ display: "flex", flexDirection: "column", gap: "4px", marginBottom: "24px", width: "90%" }}>
 			<div
 				className="skeleton"
 				style={{

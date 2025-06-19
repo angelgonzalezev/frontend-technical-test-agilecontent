@@ -58,8 +58,8 @@ const HeaderComponent = () => {
 					<img src={GoogleIcon} onClick={handleHomeRedirection} style={{ maxWidth: "92px", cursor: "pointer" }} />
 					<SearchBarComponent
 						searchValue={searchValue}
-						px="8px"
-						py="4px"
+						px="12px"
+						py="6px"
 						maxW="300px"
 						handleOnChange={handleOnChangeInput}
 						handleSearch={handleOnSearch}
@@ -86,7 +86,7 @@ const HeaderComponent = () => {
 						width: "40px",
 					}}
 				>
-					<img src={UserProfileImage} style={{ borderRadius: "100%" }} />
+					<img src={UserProfileImage} style={{ borderRadius: "100%", height: "40px", width: "40px" }} />
 				</div>
 			</div>
 		</div>

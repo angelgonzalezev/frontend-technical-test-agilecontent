@@ -1,5 +1,6 @@
-import { useBreakpointValue } from "@chakra-ui/react";
-
 export const useIsMobile = () => {
-	return useBreakpointValue({ base: true, md: false });
+	const currentScreenWidth = window.innerWidth;
+
+	console.log("🚀 ~ useIsMobile ~ currentScreenWidth:", currentScreenWidth);
+	return currentScreenWidth < 768 ? true : false;
 };

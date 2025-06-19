@@ -51,7 +51,14 @@ const SearchResult = () => {
 
 		if (!searchSuccess) {
 			return (
-				<div style={{ display: "flex", flexDirection: "column" }}>
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						width: "90%",
+						alignItems: "start",
+					}}
+				>
 					{searchParam.trim() !== "" && (
 						<p>
 							No results for
@@ -73,18 +80,16 @@ const SearchResult = () => {
 		}
 
 		return (
-			<>
-				<div style={{ display: "grid", gridTemplateColumns: "0.7fr 0.3fr", gap: "1rem", width: "90%" }}>
-					<div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-						{searchList.map((item, index) => (
-							<SearchItemComponent key={index} item={item} handleSelectItem={(item) => handleSelectItem(item)} />
-						))}
-					</div>
-					<div style={{ display: window.innerWidth < 768 ? "none" : "block" }}>
-						{selectedItem ? <ItemDetailsComponent item={selectedItem} /> : null}
-					</div>
+			<div style={{ display: "grid", gridTemplateColumns: "0.7fr 0.3fr", gap: "10px", width: "90%" }}>
+				<div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+					{searchList.map((item, index) => (
+						<SearchItemComponent key={index} item={item} handleSelectItem={(item) => handleSelectItem(item)} />
+					))}
 				</div>
-			</>
+				<div style={{ display: window.innerWidth < 768 ? "none" : "block" }}>
+					{selectedItem ? <ItemDetailsComponent item={selectedItem} /> : null}
+				</div>
+			</div>
 		);
 	};
 
