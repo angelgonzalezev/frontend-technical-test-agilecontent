@@ -11,8 +11,21 @@ const HomePage = () => {
 
 	const [searchValue, setSearchValue] = useState();
 
-	const handleOnSearch = () => {
+	const handleSearch = () => {
 		navigate(`${PublicRoutes.Search}?value=${searchValue}`);
+	};
+
+	const handleKeyDown = (e) => {
+		if (searchValue && e.key === "Enter") {
+			e.preventDefault();
+			handleSearch();
+		}
+	};
+
+	const handleClick = (e) => {
+		if (e.target.name === "search") {
+			handleSearch();
+		}
 	};
 
 	const handleOnChangeInput = (e) => {
@@ -22,15 +35,16 @@ const HomePage = () => {
 	return (
 		<Center flexDirection="column" w="100" h="100%" px={20} gap={8}>
 			<Image src={GoogleIcon} maxW="272px" />
-			<SearchBarComponent maxW="720px" handleOnChange={handleOnChangeInput} />
+			<SearchBarComponent maxW="720px" handleOnChange={handleOnChangeInput} handleSearch={handleKeyDown} />
 
 			<Button
-				onClick={handleOnSearch}
+				onClick={handleClick}
 				disabled={!searchValue}
 				bgColor={colors.GREYLIGHT}
 				color={colors.GREYDARK}
 				_focusVisible={{ border: "none", boxShadow: "none", outline: "none" }}
 				_hover={{ border: "none" }}
+				name="search"
 			>
 				Buscar
 			</Button>

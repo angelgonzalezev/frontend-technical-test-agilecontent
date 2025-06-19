@@ -15,7 +15,14 @@ function App() {
 					</MainLayout>
 				}
 			/>
-			<Route path={PublicRoutes.Search} element={<SearchResult />} />
+			<Route
+				path={PublicRoutes.Search}
+				element={
+					<MainLayout>
+						<SearchResult />
+					</MainLayout>
+				}
+			/>
 		</Routes>
 	);
 }
