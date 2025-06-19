@@ -7,6 +7,8 @@ import ItemDetailsComponent from "./components/ItemDetailsComponent";
 import ItemDetailsDialogComponent from "./components/ItemDetailsDialogComponent";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useSelector } from "react-redux";
+import NoResultResponseComponent from "./components/NoResultResponseComponent";
+import ResultResonseComponent from "./components/ResultResonseComponent";
 
 const SearchResult = () => {
 	const isMobile = useIsMobile();
@@ -50,46 +52,16 @@ const SearchResult = () => {
 		}
 
 		if (!searchSuccess) {
-			return (
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						width: "90%",
-						alignItems: "start",
-					}}
-				>
-					{searchParam.trim() !== "" && (
-						<p>
-							No results for
-							<span style={{ fontWeight: "bold" }}> '{searchParam}'.</span>
-						</p>
-					)}
-					<p>
-						Try looking for:
-						{types.map((item, index) => (
-							<span key={index} style={{ fontWeight: "bold" }}>
-								{" "}
-								{item}
-							</span>
-						))}
-						.
-					</p>
-				</div>
-			);
+			return <NoResultResponseComponent searchParam={searchParam} types={types} />;
 		}
 
 		return (
-			<div style={{ display: "grid", gridTemplateColumns: "0.7fr 0.3fr", gap: "10px", width: "90%" }}>
-				<div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-					{searchList.map((item, index) => (
-						<SearchItemComponent key={index} item={item} handleSelectItem={(item) => handleSelectItem(item)} />
-					))}
-				</div>
-				<div style={{ display: window.innerWidth < 768 ? "none" : "block" }}>
-					{selectedItem ? <ItemDetailsComponent item={selectedItem} /> : null}
-				</div>
-			</div>
+			<ResultResonseComponent
+				handleSelectItem={handleSelectItem}
+				searchList={searchList}
+				selectedItem={selectedItem}
+				isMobile={isMobile}
+			/>
 		);
 	};
 
