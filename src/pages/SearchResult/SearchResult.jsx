@@ -1,16 +1,18 @@
-import { Box, Center, Grid, Image, Stack, Text } from "@chakra-ui/react";
-import { Fragment, useEffect, useState } from "react";
+import { Box, Grid, Image, Stack, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { getFakeDataService } from "../../services/animalServices";
 import SkeletonComponent from "./components/SkeletonComponent";
 import SearchItemComponent from "./components/SearchItemComponent";
-import { animalTypes } from "../../constants/animals";
 import ItemDetailsComponent from "./components/ItemDetailsComponent";
 import ItemDetailsDialogComponent from "./components/ItemDetailsDialogComponent";
 import { useIsMobile } from "../../hooks/useIsMobile";
+import { useSelector } from "react-redux";
 
 const SearchResult = () => {
 	const isMobile = useIsMobile();
+
+	const { animals, types } = useSelector((store) => store.animals);
 
 	const [searchParams] = useSearchParams();
 	const searchParam = searchParams.get("value");
@@ -25,7 +27,7 @@ const SearchResult = () => {
 	useEffect(() => {
 		setLoading(true);
 		const getFakeData = async () => {
-			const { success, data } = await getFakeDataService(searchParam);
+			const { success, data } = await getFakeDataService({ search: searchParam, animals, types });
 
 			setSearchSuccess(success);
 			setSearchList(data);
@@ -62,7 +64,7 @@ const SearchResult = () => {
 					)}
 					<Text>
 						Try looking for:
-						{animalTypes.map((item, index) => (
+						{types.map((item, index) => (
 							<Text key={index} as="span" fontWeight="bold">
 								{" "}
 								{item}
@@ -91,7 +93,7 @@ const SearchResult = () => {
 	};
 
 	return (
-		<Stack flexDirection="column" w="100" h="100%" px={10} gap={8} mt={4}>
+		<Stack flexDirection="column" w="100%" h="100%" px={10} gap={8} mt={4}>
 			{renderSearch()}
 			{openDetailsDialog && (
 				<ItemDetailsDialogComponent selectedItem={selectedItem} setOpenDetailsDialog={setOpenDetailsDialog} />

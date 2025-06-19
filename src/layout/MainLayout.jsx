@@ -4,7 +4,7 @@ import FooterComponent from "../components/FooterComponent";
 
 const MainLayout = ({ children }) => {
 	return (
-		<Stack w="100%" h="100vh" flexDirection="column">
+		<Stack w="100%" minH="100vh" h="100%" flexDirection="column" justifyContent="space-between">
 			<HeaderComponent />
 			{children}
 			<FooterComponent />

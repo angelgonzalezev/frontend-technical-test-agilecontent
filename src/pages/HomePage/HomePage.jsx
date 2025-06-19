@@ -9,7 +9,7 @@ import { PublicRoutes } from "../../routes/routes";
 const HomePage = () => {
 	const navigate = useNavigate();
 
-	const [searchValue, setSearchValue] = useState();
+	const [searchValue, setSearchValue] = useState("");
 
 	const handleSearch = () => {
 		navigate(`${PublicRoutes.Search}?value=${searchValue}`);
