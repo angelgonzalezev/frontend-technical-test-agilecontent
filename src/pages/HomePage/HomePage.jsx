@@ -47,7 +47,7 @@ const HomePage = () => {
 				gap: "18px",
 			}}
 		>
-			<img src={GoogleIcon} style={{ maxWidth: "272px" }} />
+			<img src={GoogleIcon} style={{ maxWidth: "272px" }} alt="google-logo" />
 			<SearchBarComponent
 				maxW="720px"
 				handleOnChange={handleOnChangeInput}
