@@ -25,7 +25,7 @@ Follow these steps to run the project on your local:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/tu-usuario/frontend-technical-test-agilecontent.git
+git clone https://github.com/angelgonzalezev/frontend-technical-test-agilecontent.git
 cd frontend-technical-test-agilecontent
 
 # 2. Install dependences
